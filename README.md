@@ -51,6 +51,13 @@ Now we can run server whatever the server js file by:
 npm start
 ```
 
+## Static Files
+
+To add static files we have to use the static feature of express to target the static folder:
+
+```js
+app.use(express.static('public'));
+```
 
 
 
