@@ -11,9 +11,9 @@ npm install express --save
  
 ## Npm versions management:
  
-"express": "^4.15.3" => download latest of 4.xx.x
-"express": "~4.15.3" => download latest of 4.15.x
-"express": "4.15.3" => download the version 4.15.3
+"express": "^4.15.3" => download latest of 4.xx.x  
+"express": "~4.15.3" => download latest of 4.15.x  
+"express": "4.15.3" => download the version 4.15.3  
 
 ## Npm start
 
