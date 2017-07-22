@@ -83,8 +83,85 @@ to install front package:
 bower install --save front-awesome
 bower install --save bootstrap
 ```
+## JsHint & JSCS
 
+JsHint is a code quality enforcement tool, it detectes potential errors and enforces coding conventions.
+JSCS is a code style enforcement tool, it enforces style conventions.  
 
+To configure JsHint and JSCS we need to create to configuration files .jshintrc and .jscsrc .
+If you are using `brackets` editor you can download JsHint and JsCS extensions.
 
+## Gulp
 
+Gulp is a ,code based configuration, task manager for web projects.
+
+```shell
+npm install gulp -g 
+npm install gulp --save-dev 
+
+```
+
+```
+--save adds the package to your dependency list ("dependencies" in package.json). This is a list of only the dependencies that your package needs to run. These are the dependencies that need to be installed when a user installs your package from npm with the intent of using it.
+
+--save-dev adds the package to your developer dependency list ("devDependencies" in package.json). This is a list of dependencies that you need only for developing the package. Examples would be like babel, gulp, a testing framework, etc.
+```
+
+now we add gulpfile.js to desfine and manage tasks.
+
+### JSCS in Gulp
+
+in this section we will add a task to manage quality and style code:
+
+```shell
+npm install --save-dev jshint gulp-jshint gulp-jscs jshint-stylish
+```
+
+style task definition in gulpjs
+
+```js
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
+var jscs = require('gulp-jscs');
+var jsFiles = ['*.js', 'src/**/*.js'];
+
+gulp.task('style', function () {
+    return gulp.src(jsFiles)
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish', {
+            verbose: true
+        }))
+        .pipe(jscs());
+});
+```
+
+now we can run gulp task by this command:
+
+```shell
+#(task_name=style in the example below)
+gulp task_name
+```
+### Wiredep
+
+Wiredep is used to automatically inject javascript and css dependencies on html(jade, ejs, dbs,...) files.
+
+```shell
+npm install --save-dev wiredep
+```
+
+we add a gulp task we called inject in order to setup wiredep options as follow:
+
+```javascript
+```
+
+now we add this two comments to our html file and then we execute the new gulp task inject, the task will automatically generate the js and css dependencies
+
+```html
+ <!-- bower:css -->
+<!-- endbower -->
+
+<!-- bower:js -->
+<!-- endbower -->
+
+```
 
