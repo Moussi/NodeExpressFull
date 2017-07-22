@@ -57,7 +57,34 @@ To add static files we have to use the static feature of express to target the s
 
 ```js
 app.use(express.static('public'));
+app.use(express.static('src/views'));
 ```
+
+## Bower
+Bower is a package manager for the web , it works very similar to npm based on flat backage hierarchy.
+install and init bower by the following commands
+
+```shell
+npm install -g bower
+bower init
+```
+bower init will generate the file bower.json
+In order to personalize bower configuration we create a file .bowerrc where put confs as follow to modify downlaoded package location:
+
+```js
+{
+    "directory":"/public/lib"
+}
+```
+
+to install front package:
+
+```shell
+bower install --save front-awesome
+bower install --save bootstrap
+```
+
+
 
 
 

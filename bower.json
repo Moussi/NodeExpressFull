@@ -1,0 +1,20 @@
+{
+  "name": "expressjumpstart",
+  "description": "Building Web Applications with Node js and Express 4.0 Setting Up full FRont Environment",
+  "main": "app.js",
+  "authors": [
+    "Moussi Aymen"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Moussi/NodeExpressFull",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
