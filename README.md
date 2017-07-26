@@ -200,5 +200,47 @@ In order to fix css generation dependencies issue add the following overrides on
 As we detailed on wiredep section , wiredep manage bower dependencies based on bower.json file, so what about our css and js files how to manage them? that's why gulp-inject.
 
 ```shell
-npm install --save-dev wiredep
+npm install --save-dev gulp-inject
 ```
+
+update gulp inject task in gulpfile.js in order to add the gulp-inject pipe:
+
+```javascript
+gulp.task('inject', function () {
+    var wiredep = require('wiredep').stream;
+    var inject = require('gulp-inject');
+
+    var injectSrc = gulp.src(['./public/css/*.css', './public/js/*.js'], {
+        read: false
+    });
+
+    var injectOptions = {
+        ignorePath: '/public'
+    };
+    
+    var wiredoptions = {
+        bowrJson: require('./bower.json'),
+        directory: './public/lib',
+        ignorePath: '../../public'
+    };
+    return gulp.src('./src/views/*.html')
+        .pipe(wiredep(wiredoptions))
+        .pipe(inject(injectSrc, injectOptions))
+        .pipe(gulp.dest('./src/views'));
+});
+```
+
+add this comments to your html file 
+
+```html
+   <!-- inject:css -->
+        <link rel="stylesheet" href="/css/styles.css">
+        <!-- endinject -->
+
+        <!-- inject:js -->
+        <!-- endinject -->
+        
+```
+
+run gulp inject commande to assume that the style.css file was added to you index.html file.
+
