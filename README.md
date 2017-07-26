@@ -234,13 +234,19 @@ add this comments to your html file
 
 ```html
    <!-- inject:css -->
-        <link rel="stylesheet" href="/css/styles.css">
         <!-- endinject -->
 
         <!-- inject:js -->
-        <!-- endinject -->
-        
+        <!-- endinject -->   
 ```
 
 run gulp inject commande to assume that the style.css file was added to you index.html file.
 
+## nodemon
+
+nodemon will watch the files in the directory in which nodemon was started, and if any files change, nodemon will automatically restart your node application
+
+
+```shell
+npm install --save-dev gulp-nodemon
+```
