@@ -14,6 +14,10 @@ gulp.task('style', function () {
 
 gulp.task('inject', function () {
     var wiredep = require('wiredep').stream;
+    var inject = require('gulp-inject');
+    
+    var
+    
     var wiredoptions = {
         bowrJson: require('./bower.json'),
         directory: './public/lib',
@@ -21,5 +25,6 @@ gulp.task('inject', function () {
     };
     return gulp.src('./src/views/*.html')
         .pipe(wiredep(wiredoptions))
+    .pipe(inject())
         .pipe(gulp.dest('./src/views'));
 });

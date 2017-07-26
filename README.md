@@ -152,6 +152,17 @@ npm install --save-dev wiredep
 we add a gulp task we called inject in order to setup wiredep options as follow:
 
 ```javascript
+gulp.task('inject', function () {
+    var wiredep = require('wiredep').stream;
+    var wiredoptions = {
+        bowrJson: require('./bower.json'),
+        directory: './public/lib',
+        ignorePath: '../../public'
+    };
+    return gulp.src('./src/views/*.html')
+        .pipe(wiredep(wiredoptions))
+        .pipe(gulp.dest('./src/views'));
+});
 ```
 
 now we add this two comments to our html file and then we execute the new gulp task inject, the task will automatically generate the js and css dependencies
@@ -164,4 +175,30 @@ now we add this two comments to our html file and then we execute the new gulp t
 <!-- endbower -->
 
 ```
+In order to fix css generation dependencies issue add the following overrides on your bower.js file:
 
+```js
+"overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css",
+        "less/bootstrap.less"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "css/font-awesome.min.css",
+        "scss/font-awesome.scss"
+      ]
+    }
+  }
+```
+### Gulp Inject
+
+As we detailed on wiredep section , wiredep manage bower dependencies based on bower.json file, so what about our css and js files how to manage them? that's why gulp-inject.
+
+```shell
+npm install --save-dev wiredep
+```
