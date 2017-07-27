@@ -250,3 +250,23 @@ nodemon will watch the files in the directory in which nodemon was started, and 
 ```shell
 npm install --save-dev gulp-nodemon
 ```
+
+nodemon configuration via gulp 
+
+```js
+gulp.task('serve', ['style', 'inject'], function () {
+    var options = {
+        script: 'app.js',
+        delayTime: 1,
+        env: {
+            'PORT': 5000
+        },
+        watch: jsFiles
+    }
+
+    return nodemon(options)
+        .on('restart', function(ev){
+            console.log('retsarting server ...!!!');
+        });
+});
+```

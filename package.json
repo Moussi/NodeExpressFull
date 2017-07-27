@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/Moussi/NodeExpressFull#readme",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "jade": "^1.11.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
